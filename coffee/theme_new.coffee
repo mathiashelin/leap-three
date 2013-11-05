@@ -131,6 +131,12 @@ class SpecificTheme extends DefaultTheme
       else
         #sphere.rotation.set(0,0,0)
         sphere.rotation.y += 0.01
+        posY = sphere.position.y
+        if posY > 0.5
+          posY -= 0.01
+        else
+          posY = 0.5
+        sphere.position.y = posY
 
       renderer.render(scene, camera)
 

@@ -150,7 +150,7 @@
       scene.add(sphere);
       camera.position.set(0, 2, 4);
       return Leap.loop(function(frame) {
-        var hand, offsetX, offsetY, offsetZ, rotX, rotZ, _i, _len, _ref2;
+        var hand, offsetX, offsetY, offsetZ, posY, rotX, rotZ, _i, _len, _ref2;
         if (frame.pointables.length > 1) {
           _ref2 = frame.hands;
           for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
@@ -166,6 +166,13 @@
           }
         } else {
           sphere.rotation.y += 0.01;
+          posY = sphere.position.y;
+          if (posY > 0.5) {
+            posY -= 0.01;
+          } else {
+            posY = 0.5;
+          }
+          sphere.position.y = posY;
         }
         return renderer.render(scene, camera);
       });
